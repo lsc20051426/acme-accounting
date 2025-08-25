@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { Company } from '../../db/models/Company';
 
 interface NewCompanyDto {
@@ -26,5 +34,15 @@ export class CompaniesController {
     };
 
     return companyDto;
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: number) {
+    const company = await Company.findByPk(id);
+    if (!company)
+      throw new NotFoundException(`Company with id ${id} not found`);
+
+    await company.destroy();
+    return { message: 'Company deleted successfully' };
   }
 }

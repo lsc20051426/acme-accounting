@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { User, UserRole } from '../../db/models/User';
 
 interface NewUserDto {
@@ -37,5 +46,14 @@ export class UsersController {
     };
 
     return userDto;
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: number) {
+    const user = await User.findByPk(id);
+    if (!user) throw new NotFoundException(`User with id ${id} not found`);
+
+    await user.destroy();
+    return { message: 'User deleted successfully' };
   }
 }

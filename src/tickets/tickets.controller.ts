@@ -1,4 +1,13 @@
-import { Body, ConflictException, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  ConflictException,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { Company } from '../../db/models/Company';
 import {
   Ticket,
@@ -78,5 +87,14 @@ export class TicketsController {
     };
 
     return ticketDto;
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: number) {
+    const ticket = await Ticket.findByPk(id);
+    if (!ticket) throw new NotFoundException(`Ticket with id ${id} not found`);
+
+    await ticket.destroy();
+    return { message: 'Ticket deleted successfully' };
   }
 }

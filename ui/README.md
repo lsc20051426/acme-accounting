@@ -22,10 +22,13 @@ Every ticket has
   pagination. This is only for creating logic
   testing.
 - `POST api/v1/tickets` - creates a ticket. It accepts `type` and `companyId`
+- `DELETE api/v1/tickets/:id` - ticket hard delete
 - `GET api/v1/companies` - returns all companies in the system. Without pagination.
 - `POST api/v1/companies` - creates a company. It accepts `name`
+- `DELETE api/v1/companies:id` - company hard delete
 - `GET api/v1/users` - returns all users. Without pagination. Allowed filter by `companyId`
 - `POST api/v1/users` - creates a company. It accepts `name`, `role`, `companyId`
+- `DELETE api/v1/users:id` - user hard delete
 
 **Ticket Creation Rules**
 
