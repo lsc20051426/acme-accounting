@@ -63,3 +63,14 @@ export async function deleteTicket(id: number): Promise<void> {
     throw new Error(message || `HTTP ${response.status}`);
   }
 }
+
+export async function deleteTickets(): Promise<void> {
+  const response = await apiFetch(`/api/v1/tickets`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    const { message } = await response.json().catch(() => response.statusText);
+    throw new Error(message || `HTTP ${response.status}`);
+  }
+}

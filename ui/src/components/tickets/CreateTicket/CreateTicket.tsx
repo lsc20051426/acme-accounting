@@ -8,6 +8,8 @@ import {
   useCreateTicketQuery,
   useInvalidateGetTicketsQuery,
 } from '../../../queries/ticket.query';
+import { useInvalidateGetUsersQuery } from '../../../queries/user.query';
+import { useInvalidateGetCompaniesQuery } from '../../../queries/company.query';
 
 export const CreateTicket = () => {
   const {
@@ -16,6 +18,8 @@ export const CreateTicket = () => {
     isError,
   } = useCreateTicketQuery();
   const invalidateGetTickets = useInvalidateGetTicketsQuery();
+  const invalidateGetUsers = useInvalidateGetUsersQuery();
+  const invalidateGetCompanies = useInvalidateGetCompaniesQuery();
   const [open, setOpen] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
@@ -34,6 +38,8 @@ export const CreateTicket = () => {
         type: data.ticketType,
       });
       invalidateGetTickets();
+      invalidateGetUsers();
+      invalidateGetCompanies();
       setOpenSnackbar(true);
       setSnackbarMessage('Ticket created successfully!');
     } catch (error: Error) {

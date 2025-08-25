@@ -97,4 +97,17 @@ export class TicketsController {
     await ticket.destroy();
     return { message: 'Ticket deleted successfully' };
   }
+
+  @Delete()
+  async deleteBulk() {
+    const tickets = await Ticket.findAll();
+    if (!tickets.length) throw new NotFoundException(`Tickets not found`);
+
+    await Ticket.destroy({
+      where: {
+        id: tickets.map((ticket) => ticket.id),
+      },
+    });
+    return { message: 'Tickets deleted successfully' };
+  }
 }
