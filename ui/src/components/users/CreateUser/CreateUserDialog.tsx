@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogTitle,
   FormControl,
+  FormHelperText,
   InputLabel,
   MenuItem,
   Select,
@@ -43,8 +44,15 @@ export const CreateUserDialog = ({
             <Controller
               control={control}
               name="role"
-              render={({ field: { onChange, onBlur, value } }) => (
-                <FormControl fullWidth sx={{ mb: 2 }}>
+              rules={{
+                required: true,
+              }}
+              render={({ field: { onChange, onBlur, value }, fieldState }) => (
+                <FormControl
+                  fullWidth
+                  sx={{ mb: 2 }}
+                  error={Boolean(fieldState.error)}
+                >
                   <InputLabel id="role-label">Role</InputLabel>
                   <Select
                     labelId="role-label"
@@ -52,6 +60,7 @@ export const CreateUserDialog = ({
                     value={value}
                     onChange={onChange}
                     onBlur={onBlur}
+                    error={Boolean(fieldState.error)}
                   >
                     {roleOptions.map((role) => (
                       <MenuItem key={role.value} value={role.value}>
@@ -59,13 +68,32 @@ export const CreateUserDialog = ({
                       </MenuItem>
                     ))}
                   </Select>
+                  {fieldState.error && (
+                    <FormHelperText>{fieldState.error.message}</FormHelperText>
+                  )}
                 </FormControl>
               )}
             />
             <Controller
               control={control}
               name="name"
-              render={({ field: { onChange, onBlur, value } }) => (
+              rules={{
+                required: 'Name is required',
+                minLength: {
+                  value: 2,
+                  message: 'Name must be at least 2 characters long',
+                },
+                maxLength: {
+                  value: 40,
+                  message: 'Name must be at most 40 characters long',
+                },
+                pattern: {
+                  value: /^[a-zA-Z\s'-]+$/,
+                  message:
+                    'Name can only contain letters, spaces, apostrophes, and hyphens',
+                },
+              }}
+              render={({ field: { onChange, onBlur, value }, fieldState }) => (
                 <TextField
                   fullWidth
                   id="user-name"
@@ -74,6 +102,8 @@ export const CreateUserDialog = ({
                   onChange={onChange}
                   onBlur={onBlur}
                   label="Name"
+                  error={Boolean(fieldState.error)}
+                  helperText={fieldState?.error?.message}
                 />
               )}
             />

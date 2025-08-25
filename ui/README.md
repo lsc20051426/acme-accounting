@@ -30,6 +30,10 @@ Every ticket has
 - `POST api/v1/users` - creates a company. It accepts `name`, `role`, `companyId`
 - `DELETE api/v1/users:id` - user hard delete
 
+## Task
+
+1. Write E2E tests to check the logic of Ticket Creation Rules. It is preferable to use playwright as a testing tool.
+
 **Ticket Creation Rules**
 
 If a ticket type is `managementReport`, then the ticket category
@@ -43,9 +47,9 @@ If there are multiple secretaries, throw an error.
 
 If we cannot find an assignee with the required role, throw an error.
 
-## Task
+The most recently created tickets should be at the top of the list.
 
-1. Write E2E tests to check the logic of Ticket Creation Rules. It is preferable to use playwright as a testing tool.
+2. Write UI tests for the company's user page
 
 ## Project setup and run
 
