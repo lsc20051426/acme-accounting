@@ -50,3 +50,14 @@ export async function createTicket(
 
   return response.json();
 }
+
+export async function deleteTicket(id: number): Promise<void> {
+  const response = await fetch(`/api/v1/tickets/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    const { message } = await response.json().catch(() => response.statusText);
+    throw new Error(message || `HTTP ${response.status}`);
+  }
+}

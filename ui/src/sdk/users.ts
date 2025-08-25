@@ -39,3 +39,14 @@ export async function createUser(userData: newUserDto): Promise<UserDto> {
 
   return response.json();
 }
+
+export async function deleteUser(id: number): Promise<void> {
+  const response = await fetch(`/api/v1/users/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    const { message } = await response.json().catch(() => response.statusText);
+    throw new Error(message || `HTTP ${response.status}`);
+  }
+}

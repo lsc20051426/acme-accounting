@@ -30,3 +30,14 @@ export async function createCompany(
 
   return response.json();
 }
+
+export async function deleteCompany(id: number): Promise<void> {
+  const response = await fetch(`/api/v1/companies/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    const { message } = await response.json().catch(() => response.statusText);
+    throw new Error(message || `HTTP ${response.status}`);
+  }
+}
