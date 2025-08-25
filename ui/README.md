@@ -32,24 +32,24 @@ Every ticket has
 
 ## Task
 
-1. Write E2E tests to check the logic of Ticket Creation Rules. It is preferable to use playwright as a testing tool.
+**1. Write E2E tests to check the logic of ticket creation. It is preferable to use playwright as a testing tool.**
 
-**Ticket Creation Rules**
+**Ticket Creation Rules:**
 
-If a ticket type is `managementReport`, then the ticket category
-should be `accounting`. The assignee is a user with the role = `Accountant`.
-If there are multiple accountants in the company,
-take the most recently created one.
+- If a ticket type is `managementReport`, then the ticket category
+  should be `accounting`. The assignee is a user with the role = `Accountant`.
+- If there are multiple accountants in the company,
+  take the most recently created one.
+- If a ticket type is `registrationAddressChange`, then the ticket category
+  should be `Corporate`. Assignee is a user with the role `Corporate secretary`.
+- If there are multiple secretaries, throw an error.
+- If we cannot find an assignee with the required role, throw an error.
+- The most recently created tickets should be at the top of the list.
 
-If a ticket type is `registrationAddressChange`, then the ticket category
-should be `Corporate`. Assignee is a user with the role `Corporate secretary`.
-If there are multiple secretaries, throw an error.
+**2. Write UI tests for the company's user page http://localhost:5173/companies/:id/users**
 
-If we cannot find an assignee with the required role, throw an error.
-
-The most recently created tickets should be at the top of the list.
-
-2. Write UI tests for the company's user page
+- Write tests that check various page states
+- Find the bug that contains the user creation form
 
 ## Project setup and run
 
