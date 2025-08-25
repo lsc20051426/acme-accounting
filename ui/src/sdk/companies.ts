@@ -1,3 +1,5 @@
+import { apiFetch } from './api';
+
 export interface newCompanyDto {
   name: string;
 }
@@ -8,14 +10,14 @@ export interface CompanyDto {
 }
 
 export async function getCompanies(): Promise<CompanyDto[]> {
-  const response = await fetch('/api/v1/companies');
+  const response = await apiFetch('/api/v1/companies');
   return response.json();
 }
 
 export async function createCompany(
   companyData: newCompanyDto,
 ): Promise<CompanyDto> {
-  const response = await fetch('/api/v1/companies', {
+  const response = await apiFetch('/api/v1/companies', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -32,7 +34,7 @@ export async function createCompany(
 }
 
 export async function deleteCompany(id: number): Promise<void> {
-  const response = await fetch(`/api/v1/companies/${id}`, {
+  const response = await apiFetch(`/api/v1/companies/${id}`, {
     method: 'DELETE',
   });
 

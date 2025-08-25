@@ -1,3 +1,5 @@
+import { apiFetch } from './api';
+
 enum TicketStatus {
   open = 'open',
   resolved = 'resolved',
@@ -28,14 +30,14 @@ export interface TicketDto {
 }
 
 export async function getTickets(): Promise<TicketDto[]> {
-  const response = await fetch('/api/v1/tickets');
+  const response = await apiFetch('/api/v1/tickets');
   return response.json();
 }
 
 export async function createTicket(
   ticketData: newTicketDto,
 ): Promise<TicketDto> {
-  const response = await fetch('/api/v1/tickets', {
+  const response = await apiFetch('/api/v1/tickets', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -52,7 +54,7 @@ export async function createTicket(
 }
 
 export async function deleteTicket(id: number): Promise<void> {
-  const response = await fetch(`/api/v1/tickets/${id}`, {
+  const response = await apiFetch(`/api/v1/tickets/${id}`, {
     method: 'DELETE',
   });
 

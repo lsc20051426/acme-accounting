@@ -1,3 +1,5 @@
+import { apiFetch } from './api';
+
 export enum UserRole {
   accountant = 'accountant',
   corporateSecretary = 'corporateSecretary',
@@ -17,14 +19,14 @@ export interface UserDto {
 }
 
 export async function getUsers(companyId?: number): Promise<UserDto[]> {
-  const response = await fetch(
+  const response = await apiFetch(
     `/api/v1/users?${companyId ? `companyId=${companyId}` : ''}`,
   );
   return response.json();
 }
 
 export async function createUser(userData: newUserDto): Promise<UserDto> {
-  const response = await fetch('/api/v1/users', {
+  const response = await apiFetch('/api/v1/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -41,7 +43,7 @@ export async function createUser(userData: newUserDto): Promise<UserDto> {
 }
 
 export async function deleteUser(id: number): Promise<void> {
-  const response = await fetch(`/api/v1/users/${id}`, {
+  const response = await apiFetch(`/api/v1/users/${id}`, {
     method: 'DELETE',
   });
 
