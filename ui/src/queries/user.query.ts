@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { createUser, getUsers, type newUserDto } from '../sdk/users';
+import { createUser, getUsers, type newUserDto } from '../../sdk/users';
 
 const queryKey = ['users'];
 

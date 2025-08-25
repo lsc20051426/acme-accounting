@@ -3,7 +3,7 @@ import {
   createCompany,
   getCompanies,
   type newCompanyDto,
-} from '../sdk/companies';
+} from '../../sdk/companies';
 
 const queryKey = ['companies'];
 

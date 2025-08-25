@@ -1,4 +1,4 @@
-import { TicketCategory, TicketType } from '../../../sdk/tickets';
+import { TicketCategory, TicketType } from '../../../../sdk/tickets';
 import {
   Avatar,
   Box,
@@ -12,9 +12,9 @@ import {
 import { TicketListEmpty } from './TicketListEmpty';
 import { useGetTicketsQuery } from '../../../queries/ticket.query';
 import { useGetCompaniesQuery } from '../../../queries/company.query';
-import type { CompanyDto } from '../../../sdk/companies';
+import type { CompanyDto } from '../../../../sdk/companies';
 import { useGetUsersQuery } from '../../../queries/user.query';
-import type { UserDto } from '../../../sdk/users';
+import type { UserDto } from '../../../../sdk/users';
 
 export const TicketList = () => {
   const { data: tickets = [], isLoading } = useGetTicketsQuery();

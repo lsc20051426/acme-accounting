@@ -10,7 +10,7 @@ import {
   Select,
 } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
-import { TicketType } from '../../../sdk/tickets';
+import { TicketType } from '../../../../sdk/tickets';
 import { useGetCompaniesQuery } from '../../../queries/company.query';
 
 const ticketTypeOptions = [

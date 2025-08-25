@@ -11,7 +11,7 @@ import {
   TextField,
 } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
-import { UserRole } from '../../../sdk/users';
+import { UserRole } from '../../../../sdk/users';
 
 export interface CreateUserFormData {
   name: string;

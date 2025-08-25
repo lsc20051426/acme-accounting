@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { createTicket, getTickets, type newTicketDto } from '../sdk/tickets';
+import { createTicket, getTickets, type newTicketDto } from '../../sdk/tickets';
 
 const queryKey = ['tickets'];
 
