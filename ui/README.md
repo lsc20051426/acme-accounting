@@ -46,7 +46,7 @@ Every ticket has
 - If we cannot find an assignee with the required role, throw an error.
 - The most recently created tickets should be at the top of the list.
 
-**2. Write UI tests for the company's user page http://localhost:5173/companies/:id/users**
+**2. Write UI tests for the company's user page /companies/:id/users**
 
 - Write tests that check various page states
 - Find the bug that contains the user creation form
