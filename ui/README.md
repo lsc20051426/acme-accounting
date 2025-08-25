@@ -85,7 +85,8 @@ npm start
 1. NPM
 
 ```sh
-$ npm install
+cd ui
+npm install
 ```
 
 2. Start the server
