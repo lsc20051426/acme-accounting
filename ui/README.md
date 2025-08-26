@@ -79,7 +79,6 @@ docker-compose up -d
 3. Run migrations
 
 ```sh
-npm run migrate:create
 npm run migrate
 ```
 
@@ -102,4 +101,10 @@ npm install
 
 ```sh
 npm start
+```
+
+3. Run tests
+
+```sh
+npm run test
 ```
