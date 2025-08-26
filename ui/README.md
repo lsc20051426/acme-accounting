@@ -56,12 +56,18 @@ Every ticket has
 
 ## Project setup and run
 
+Clone repository
+
+```sh
+git clone -b feat/ui-for-tests git@github.com:OsomePteLtd/acme-accounting.git
+```
+
 ### Backend
 
 1. NPM
 
 ```sh
-$ npm install
+npm install
 ```
 
 2. Run the DB container
