@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "API_BASE_URL=http://localhost:3000 playwright test tests/"
+    "test": "API_BASE_URL=https://f5744ed21f9e.ngrok-free.app playwright test tests/"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
