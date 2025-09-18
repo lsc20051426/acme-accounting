@@ -4,6 +4,7 @@ import { SequelizeModuleOptions } from '@nestjs/sequelize/dist/interfaces/sequel
 import { Company } from '../db/models/Company';
 import { Ticket } from '../db/models/Ticket';
 import { User } from '../db/models/User';
+import { ReportJob } from '../db/models/ReportJob';
 import dbConfig from '../db/config/config.json';
 
 const devConfig = dbConfig.development as SequelizeModuleOptions;
@@ -15,7 +16,7 @@ const config = process.env.NODE_ENV === 'test' ? testConfig : devConfig;
   imports: [
     SequelizeModule.forRoot({
       ...config,
-      models: [Company, User, Ticket],
+      models: [Company, User, Ticket, ReportJob],
     }),
   ],
 })

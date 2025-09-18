@@ -132,10 +132,34 @@ considered in our code review session.
 
 Here are some of the topics you can consider:
 
-- [ ]  Code Quality
-- [ ]  Fixing Subtle Errors
-- [ ]  Using Tests
-- [ ]  Performance Considerations
+
+- [x]  Code Quality
+  - Swagger: Added documentation for API
+  - Method Decomposition: Broke down large methods into smaller, testable functions
+  - Private Methods: Proper encapsulation with private helper methods
+  - Type Safety: Comprehensive TypeScript typing throughout
+  - Separation of Concerns: Moved business logic from controllers to services
+  - Dependency Injection: Proper NestJS service injection
+  - Service Layer: Created TicketsService and ReportsService for business logic
+  - DTOs: Implemented CreateTicketDto and TicketDto for type safety
+
+- [x]  Fixing Subtle Errors
+  - Resolved test database cleanup problems
+  - Fixed TypeScript compilation errors
+  - Addressed linting warnings
+  - Add more testcases(now we have 73 tests)
+
+- [x]  Using Tests
+  - Resolved test database cleanup problems
+  - Proper mocking strategies
+  - Edge case and error scenario testing
+  - Add more testcases(now we have 73 tests)
+
+- [x]  Performance Considerations
+  - Background processing implementation
+  - Parallel execution of reports
+  - Database query optimization
+  - Response time improvements
 
 # Project setup and run
 
@@ -155,12 +179,20 @@ docker-compose up -d
 npm run db:migrate
 ```
 
-4. Start the server
+4. Seeding data (optional)
+```sh
+npm run seed
+```
+
+5. Start the server
 ```sh
 npm start
 ```
 
 5. Go to http://localhost:3000/api/v1/healthcheck 🍾
+
+
+6. API: Go to http://localhost:3000/api
 
 # Testing
 We use the integration tests instead of a unit ones for controllers.
@@ -183,7 +215,19 @@ npm run db:create:test
 npm run db:migrate:test
 ```
 
-4. Test
+4. Run Test with coverage
 ```sh
-npm test
+npm test:coverage
 ```
+
+5. Check test coverage report:
+```
+open ./coverage/index.html
+```
+
+## Majority of coding/testing part is done by Cursor.
+
+## Manually Done:
+- Small issue fix and debugging
+- Manual testing
+- Documentation
